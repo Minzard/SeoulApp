@@ -1,0 +1,15 @@
+ public void setup() {
+        Button btnfath = findViewById(R.id.btnfath); //데이터 전송
+        btnfath.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                bt.send(new byte[]{(byte) 1},true);
+
+            }
+        });
+        Button btnmoth=findViewById(R.id.btnmoth);
+        btnmoth.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                bt.send(new byte[]{(byte) 2},true);
+            }
+        });

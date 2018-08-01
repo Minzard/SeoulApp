@@ -1,0 +1,49 @@
+#include <SoftwareSerial.h>
+
+String lol;
+byte data;
+
+const int ledPin1=8;
+const int ledPin2=9;
+int Tx=6; //전송
+int Rx=7; //수신
+
+SoftwareSerial btSerial(Tx, Rx);
+ 
+void setup() 
+{
+  Serial.begin(9600);
+  btSerial.begin(9600);
+  pinMode(ledPin1,OUTPUT);
+  pinMode(ledPin2,OUTPUT);
+}
+
+void loop()
+{
+
+ 
+ if(btSerial.available())
+ {
+  data=btSerial.read();
+         if(data==1)
+        {
+             digitalWrite(ledPin1,HIGH);
+             digitalWrite(ledPin2,LOW);
+             delay(1000);
+        }
+
+                if(data==2)
+        {
+             digitalWrite(ledPin2,HIGH);
+             digitalWrite(ledPin1,LOW);
+             delay(1000);
+        }
+  
+  
+ }
+ 
+  if (Serial.available()) {         
+    btSerial.write(Serial.read());
+
+  }
+}
